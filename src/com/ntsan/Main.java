@@ -7,7 +7,7 @@ public class Main {
         NBGJsonParser nbgJsonParser = new NBGJsonParser();
         nbgJsonParser.startApp();
 
-        XMLParser xmlParser = new XMLParser();
-        xmlParser.startApp();
+        CBRXMLParser cbrxmlParser = new CBRXMLParser();
+        cbrxmlParser.startApp();
     }
 }

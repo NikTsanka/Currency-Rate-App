@@ -13,18 +13,19 @@ import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NBGJsonParser {
+class NBGJsonParser {
 
-    private static final String URL = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json/?date=";
+    private static final String URL_KA = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json/?date=";
+    private static final String URL_EN = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json/?date=";
 
-    public void startApp(){
-        NBGCurrenciesRate();
+    public void startApp() {
+        getRates();
     }
 
-    private void NBGCurrenciesRate() {
+    private void getRates() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date date = new Date();
-        String sURL = URL + dateFormat.format(date);
+        String sURL = URL_EN + dateFormat.format(date);
 
         JSONParser jsonParser = new JSONParser();
         JSONArray jsonArray;

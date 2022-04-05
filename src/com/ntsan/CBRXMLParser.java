@@ -11,13 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class XMLParser {
+public class CBRXMLParser {
 
     public void startApp() throws Exception {
-
         String[][] rates = getRates();
-        for (int i = 0; i < rates.length; i++) {
-            System.out.println(rates[i][0] + " " + rates[i][1]);
+        for (String[] rate : rates) {
+            System.out.println(rate[0] + " " + rate[1]);
         }
     }
 
