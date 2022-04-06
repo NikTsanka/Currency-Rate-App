@@ -4,7 +4,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,11 +17,36 @@ import java.util.Map;
 
 public class CBRXMLParser {
 
-    public void startApp() throws Exception {
+    public void startGUIApp() throws Exception {
         String[][] rates = getRates();
-        for (String[] rate : rates) {
-            System.out.println(rate[0] + " " + rate[1]);
-        }
+        JFrame frame = new JFrame();
+        frame.setTitle("Currency Rates");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        String[] columnNames = {"Currency Code", "Price"};
+        JTable table = new JTable(rates, columnNames);
+
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font("Poppins", Font.BOLD, 18));
+
+        table.setFont(new Font("Serif", Font.PLAIN, 15));
+        table.setRowHeight(table.getRowHeight() + 14);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        frame.add(scrollPane);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+//        for (String[] rate : rates) {
+//            System.out.println(rate[0] + " " + rate[1]);
+//        }
     }
 
     private String[][] getRates() throws Exception {

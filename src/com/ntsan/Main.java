@@ -8,6 +8,6 @@ public class Main {
         nbgJsonParser.startApp();
 
         CBRXMLParser cbrxmlParser = new CBRXMLParser();
-        cbrxmlParser.startApp();
+        cbrxmlParser.startGUIApp();
     }
 }
